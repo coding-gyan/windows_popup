@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windows PopUp || Coding Gyan</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
 
-  <body>
-    <div class="container">
-      <button class="btn" id="btn">PopUp</button>
-      <div class="popup" id="popup">
-        <nav id="nav">
-          <button class="min_btn" id="min_btn">
-            <i class="fa-solid fa-minus"></i>
-          </button>
-          <button class="max_btn" id="max_btn">
-            <i class="fa-solid fa-window-maximize"></i>
-          </button>
-          <button class="close_btn" id="close_btn">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </nav>
-        <div class="box">
-          <h2>This Is PopUp</h2>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Windows PopUp || Coding Gyan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container">
+    <button class="btn" id="btn">PopUp</button>
+    <div class="popup" id="popup">
+      <nav id="nav">
+        <button class="min_btn" id="min_btn">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="max_btn" id="max_btn">
+          <i class="fa-solid fa-window-maximize"></i>
+        </button>
+        <button class="close_btn" id="close_btn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </nav>
+      <div class="box">
+        <h4> Change background color </h4><button class="btn" id="btnBg">Change</button>
       </div>
     </div>
+  </div>
 
-    <script>
-      const btn = document.getElementById("btn");
-      const popup = document.getElementById("popup");
-      const nav = document.getElementById("nav");
-      const min_btn = document.getElementById("min_btn");
-      const max_btn = document.getElementById("max_btn");
-      const close_btn = document.getElementById("close_btn");
+  <script>
+    const btn = document.getElementById("btn");
+    const popup = document.getElementById("popup");
+    const nav = document.getElementById("nav");
+    const min_btn = document.getElementById("min_btn");
+    const max_btn = document.getElementById("max_btn");
+    const close_btn = document.getElementById("close_btn");
+    const btnBg = document.getElementById('btnBg')
 
-      btn.addEventListener("click", (e) => {
-        console.log(popup.classList.contains("active"));
-        if (popup.classList.contains("active")) {
-          popup.classList.remove("active");
-        } else {
-          popup.classList.add("active");
-        }
-      });
-      max_btn.addEventListener("click", (e) => {
-        popup.style.width = "100%";
-        popup.style.height = "100%";
-        popup.style.borderRadius = "0px";
-        nav.style.borderRadius = "0px";
-        close_btn.style.borderRadius = "0px";
-      });
-      min_btn.addEventListener("click", (e) => {
-        popup.style.width = "250px";
-        popup.style.height = "200px";
-        popup.style.borderRadius = "5px";
-        nav.style.borderRadius = "5px 5px 0 0";
-        close_btn.style.borderRadius = "0 5px 0 0";
-      });
-      close_btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", (e) => {
+      console.log(popup.classList.contains("active"));
+      if (popup.classList.contains("active")) {
         popup.classList.remove("active");
-        popup.style.width = "250px";
-        popup.style.height = "200px";
-        popup.style.borderRadius = "5px";
-        nav.style.borderRadius = "5px 5px 0 0";
-        close_btn.style.borderRadius = "0 5px 0 0";
-      });
-    </script>
-  </body>
+      } else {
+        popup.classList.add("active");
+      }
+    });
+    max_btn.addEventListener("click", (e) => {
+      popup.style.width = "100%";
+      popup.style.height = "100%";
+      popup.style.borderRadius = "0px";
+      nav.style.borderRadius = "0px";
+      close_btn.style.borderRadius = "0px";
+    });
+    min_btn.addEventListener("click", (e) => {
+      popup.style.width = "250px";
+      popup.style.height = "200px";
+      popup.style.borderRadius = "5px";
+      nav.style.borderRadius = "5px 5px 0 0";
+      close_btn.style.borderRadius = "0 5px 0 0";
+    });
+    close_btn.addEventListener("click", (e) => {
+      popup.classList.remove("active");
+      popup.style.width = "250px";
+      popup.style.height = "200px";
+      popup.style.borderRadius = "5px";
+      nav.style.borderRadius = "5px 5px 0 0";
+      close_btn.style.borderRadius = "0 5px 0 0";
+    });
+
+    // random color generator
+
+    const setBg = () => {
+      const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+      document.body.style.backgroundColor = "#" + randomColor;
+      color.innerHTML = "#" + randomColor;
+    }
+
+    btnBg.addEventListener("click", setBg);
+  </script>
+</body>
+
 </html>
